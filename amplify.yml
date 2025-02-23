@@ -3,15 +3,17 @@ backend:
   phases:
     build:
       commands:
-        - npm ci --cache .npm --prefer-offline
-        - nvm install 20         # Ensures Node v20 is installed
-        - nvm use 20             # Switches to Node v20
-        - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+        - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash   # Install nvm
+        - source ~/.bashrc                                                     # Source nvm
+        - nvm install 20                                                       # Install Node.js v20
+        - nvm use 20                                                           # Use Node.js v20
+        - npm ci --cache .npm --prefer-offline                                  # Install dependencies
+        - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID    # Deploy
 frontend:
   phases:
     build:
       commands:
-        - npm run build
+        - npm run build                                                      # Build frontend
   artifacts:
     baseDirectory: .next
     files:
