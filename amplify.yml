@@ -3,24 +3,30 @@ backend:
   phases:
     build:
       commands:
-        # Install nvm
+        # Install nvm and make sure it's properly sourced
         - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-        # Source nvm to ensure it's available for the rest of the build
         - export NVM_DIR="$HOME/.nvm"
-        - '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'  # This loads nvm
+        - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'  # This loads nvm
         # Install Node v20 and use it
         - nvm install 20
         - nvm use 20
-        # Verify Node version
+        # Verify Node version is 20
         - node -v
-        # Run your backend commands
+        # Run backend build steps (example: install dependencies)
         - npm ci --cache .npm --prefer-offline
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
     build:
       commands:
-        - npm run build
+        # Ensure nvm is sourced and Node v20 is installed for frontend build
+        - export NVM_DIR="$HOME/.nvm"
+        - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'  # This loads nvm
+        - nvm install 20
+        - nvm use 20
+        # Verify Node version is 20
+        - node -v
+        - npm run build  # Your frontend build command here
   artifacts:
     baseDirectory: .next
     files:
