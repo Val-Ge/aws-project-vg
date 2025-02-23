@@ -1,15 +1,26 @@
 {
-<<<<<<< HEAD
-  "name": "aws-project1-product",
+  "name": "my-app",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "private": true,
+  "description": "",
   "author": "",
   "license": "ISC",
-  "description": "",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@aws-amplify/adapter-nextjs": "^1.5.1",
+    "aws-amplify": "^6.13.1",
+    "next": "15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "devDependencies": {
     "@aws-amplify/backend": "^1.14.1",
     "@aws-amplify/backend-cli": "^1.4.11",
@@ -18,28 +29,7 @@
     "constructs": "^10.4.2",
     "esbuild": "^0.25.0",
     "tsx": "^4.19.3",
-    "typescript": "^5.7.3"
-  },
-  "dependencies": {
-    "@aws-amplify/adapter-nextjs": "^1.5.1",
-    "aws-amplify": "^6.13.1"
-=======
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.7"
-  },
-  "devDependencies": {
-    "typescript": "^5",
+    "typescript": "^5.7.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -48,6 +38,5 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "@eslint/eslintrc": "^3"
->>>>>>> fd6cbb2 (Initial commit)
   }
 }
